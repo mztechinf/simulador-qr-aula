@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Segura - Rede Institucional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .login-container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .logo h2 {
+            color: #343a40;
+            font-weight: 700;
+        }
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+        .btn-primary {
+            background: #007bff;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .alert {
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h2>🔒 Rede Segura</h2>
+            <p class="text-muted">Autenticação Requerida</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="username" placeholder="Matrícula ou Usuário" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" id="password" placeholder="Senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Conectar à Rede</button>
+        </form>
+
+        <div id="alertMessage" class="alert alert-danger" role="alert" style="display: none;">
+            <!-- Mensagem educacional aparecerá aqui -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio real do formulário
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const alertBox = document.getElementById('alertMessage');
+
+            // Simula um "loading"
+            alertBox.style.display = 'block';
+            alertBox.className = 'alert alert-info';
+            alertBox.innerHTML = '<strong>Verificando credenciais...</strong>';
+
+            setTimeout(() => {
+                // MOSTRA A LIÇÃO EDUCACIONAL (Isso é o que importa)
+                alertBox.className = 'alert alert-danger';
+                alertBox.innerHTML = `
+                    <h5>⚠️ <strong>ISSO FOI UMA SIMULAÇÃO DE PHISHING</strong></h5>
+                    <hr>
+                    <p>Em um ataque real, um criminoso teria roubado seus dados:</p>
+                    <ul class="text-start">
+                        <li><strong>Usuário:</strong> ${username || '[vazio]'}</li>
+                        <li><strong>Senha:</strong> ${'•'.repeat(password.length)}</li>
+                    </ul>
+                    <p class="mb-0"><strong>Lição:</strong> Nunca digite suas credenciais em links ou QR Codes de origem desconhecida!</p>
+                `;
+
+                // Limpa o formulário para ninguém se sentir exposto
+                document.getElementById('loginForm').reset();
+            }, 1500); // Espera 1.5 segundos para dar um efeito de "carregamento"
+        });
+    </script>
+</body>
+</html>
